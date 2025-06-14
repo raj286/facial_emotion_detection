@@ -1,12 +1,10 @@
 import cv2
-from keras.models import model_from_json
+import tensorflow as tf
 import numpy as np
-json_file = open("facialemotionmodelfinal.json", "r")
-model_json = json_file.read()
-json_file.close()
-model = model_from_json(model_json)
 
-model.load_weights("facialemotionmodelfinal.h5")
+# Load the model
+model = tf.keras.models.load_model("facialemotionmodelfinal.h5")
+
 haar_file=cv2.data.haarcascades + 'haarcascade_frontalface_default.xml'
 face_cascade=cv2.CascadeClassifier(haar_file)
 
